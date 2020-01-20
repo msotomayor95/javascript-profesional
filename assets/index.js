@@ -1,5 +1,3 @@
-const video = document.querySelector('video')
-const button = document.querySelector('button')
 
 class MediaPlayer {
   constructor(config){
@@ -11,6 +9,9 @@ class MediaPlayer {
 
   togglePlay = () => this.media.paused? this.play() : this.pause()
 }
+
+const video = document.querySelector('video')
+const button = document.querySelector('button')
 
 const player = new MediaPlayer({ el: video})
 
