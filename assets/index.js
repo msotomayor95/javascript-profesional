@@ -1,8 +1,12 @@
 import MediaPlayer from './MediaPlayer.js'
+import AutoPlay from './plugins/AutoPlay.js'
 
 const video = document.querySelector('video')
-const button = document.querySelector('button')
+const playButton = document.querySelector('#play')
+const muteButton = document.querySelector('#mute')
+const autoPlay = new AutoPlay() 
 
-const player = new MediaPlayer({ el: video})
+const player = new MediaPlayer({ el: video, plugins: [autoPlay]})
 
-button.onclick = () => player.togglePlay()
+playButton.onclick = () => player.togglePlay()
+muteButton.onclick = () => player.toggleMute()
