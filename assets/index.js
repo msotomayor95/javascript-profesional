@@ -1,14 +1,4 @@
-
-class MediaPlayer {
-  constructor(config){
-    this.media = config.el
-  }
-  
-  play = () => this.media.play()
-  pause = () => this.media.pause()
-
-  togglePlay = () => this.media.paused? this.play() : this.pause()
-}
+import MediaPlayer from './MediaPlayer.js'
 
 const video = document.querySelector('video')
 const button = document.querySelector('button')
