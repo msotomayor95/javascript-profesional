@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>
+      Function.prototype.call, Function.prototype.apply, Function.prototype.bind
+    </title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender Más</button></li>
+      <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+    </ul>
+
+    <script>
+      // Establece `this` usando `call`
+      function sayHi() {
+        console.log(`Hi, I'm ${this.name} ${this.apellido}`)
+      }
+
+      const kyo = {
+        name: 'Kyo',
+        apellido: 'Asakura'
+      }
+
+      sayHi.call(kyo)
+
+      // Establece `this` usando `call` y pasar argumentos a la función
+      function walk(meters, direction) {
+          console.log(`${this.name} walk ${meters} meters to the ${direction}`)
+      }
+
+      walk.call(kyo, 247, 'South')
+
+      // Establece `this` usando `apply` y pasar argumentos a la función
+      const args = [568, 'East']
+      walk.apply(kyo, args)
+
+      // Establecer `this` en una nueva función usando `bind`
+
+      const kenshin = { name: 'Kenshin', apellido: 'Himura'}
+      const holaKenshin = sayHi.bind(kenshin)
+      holaKenshin()
+
+      const kenshinWalk = walk.bind(kenshin, 1230, 'South East')
+      kenshinWalk()
+
+      // Cuándo es útil usar uno de estos métodos
+      const buttons = document.getElementsByClassName('call-to-action')
+      // buttons es un Nodelist por eso lo siguiente no funcional, no es un array
+      // buttons.forEach(element => {
+      //   element.onclick = () => alert('Nunca pares de aprender!')
+      // });
+
+      // for each en NodeList
+      Array.prototype.forEach.call(buttons, button => {
+        button.onclick = () => alert('Nunca pares de aprender!')
+      })
+    </script>
+  </body>
+</html>
